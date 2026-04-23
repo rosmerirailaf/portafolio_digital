@@ -797,20 +797,6 @@
       </a>
     </div>
   </div>
-
-  <div class="chk-wrap rv d2">
-    <div class="chk-title">Checklist de entrega</div>
-    <ul class="chk">
-      <li><span class="chk-ico">✓</span>Portada del informe sin número de página</li>
-      <li><span class="chk-ico">✓</span>Índice automatizado en Word</li>
-      <li><span class="chk-ico">✓</span>Gráficos integrados y explicados en el análisis</li>
-      <li><span class="chk-ico">✓</span>Infografía PLE con MOOC incluido</li>
-      <li><span class="chk-ico">✓</span>Link del MOOC activo y verificado</li>
-      <li><span class="chk-ico">✓</span>Todos los documentos embebidos en Google Sites</li>
-      <li><span class="chk-ico">✓</span>Sin enlaces rotos en el sitio publicado</li>
-      <li><span class="chk-ico">✓</span>Link del sitio copiado y enviado a la profesora</li>
-    </ul>
-  </div>
 </section>
 
 <!-- ══ FOOTER ══ -->
@@ -824,7 +810,7 @@
   <div class="ft-copy">Portafolio elaborado sin inteligencia artificial generativa · Universidad Católica de Temuco</div>
 </footer>
 
-<button id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">↑</button>
 
 <script>
   const spb   = document.getElementById('spb');
@@ -840,7 +826,7 @@
     stt.classList.toggle('show', s > 500);
   });
 
-  // active nav
+  // Navegación activa
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting){
@@ -852,7 +838,7 @@
   }, {threshold:.35});
   secs.forEach(s => io.observe(s));
 
-  // reveal + progress bars
+  // Animaciones de revelado y barras de progreso
   const rv = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting){
@@ -863,7 +849,7 @@
   }, {threshold:.12});
   document.querySelectorAll('.rv').forEach(el => rv.observe(el));
 
-  // also trigger bars inside diag cards
+  // Barras dentro de tarjetas de diagnóstico
   const co = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting){
@@ -874,12 +860,14 @@
   }, {threshold:.3});
   document.querySelectorAll('.dc').forEach(c => co.observe(c));
 
-  // hamburger (mobile)
+  // Menú hamburguesa para móviles
   const ham = document.getElementById('ham');
   const menu = document.getElementById('navmenu');
   if(window.innerWidth <= 960){
-    ham.style.display = 'flex';
-    ham.addEventListener('click', () => menu.classList.toggle('open'));
+    if(ham) {
+      ham.style.display = 'flex';
+      ham.addEventListener('click', () => menu.classList.toggle('open'));
+    }
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
   }
 </script>
