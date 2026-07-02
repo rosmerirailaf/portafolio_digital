@@ -553,6 +553,126 @@
     padding-top:1.5rem; border-top:1px solid rgba(255,255,255,.05);
   }
 
+  /* ─── FORMACIÓN / CERTIFICADOS ─── */
+  #formacion { background: var(--ink); position:relative; overflow:hidden; }
+  #formacion::before {
+    content:''; position:absolute; top:-180px; left:-180px;
+    width:560px; height:560px; border-radius:50%;
+    background: radial-gradient(circle, rgba(184,146,74,.05) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  #formacion .sec-tag { color:var(--gold); }
+  #formacion .sec-tag::before,
+  #formacion .sec-tag::after { background:rgba(184,146,74,.3); }
+  #formacion .sec-h { color:var(--white); }
+  #formacion .sec-p { color:rgba(255,255,255,.42); }
+
+  .cert-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+  .cert {
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(184,146,74,.16);
+    border-radius:20px; padding:1.6rem;
+    transition:border-color .35s, transform .35s, box-shadow .35s;
+    position:relative; overflow:hidden;
+  }
+  .cert:hover {
+    border-color:rgba(184,146,74,.45);
+    transform:translateY(-6px);
+    box-shadow:0 22px 60px rgba(0,0,0,.35);
+  }
+  .cert-shot {
+    position:relative; border-radius:12px; overflow:hidden;
+    cursor:zoom-in; background:#fff;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+  }
+  .cert-shot img { display:block; width:100%; height:auto; transition:transform .6s cubic-bezier(.2,.6,.2,1); }
+  .cert:hover .cert-shot img { transform:scale(1.03); }
+  /* gold shine sweep */
+  .cert-shot::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 48%, transparent 62%);
+    transform:translateX(-120%); transition:transform .8s ease;
+    pointer-events:none;
+  }
+  .cert:hover .cert-shot::after { transform:translateX(120%); }
+  .cert-zoom {
+    position:absolute; bottom:10px; right:10px; z-index:2;
+    background:rgba(15,15,26,.72); color:#fff;
+    font-size:.62rem; font-weight:500; letter-spacing:.08em;
+    padding:5px 10px; border-radius:100px;
+    backdrop-filter:blur(4px);
+  }
+  .cert-body { padding:1.3rem .4rem .3rem; }
+  .cert-plat {
+    font-size:.6rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--gold); display:block; margin-bottom:.5rem;
+  }
+  .cert-name {
+    font-family:var(--serif); font-size:1.3rem; font-weight:600;
+    color:var(--white); line-height:1.25; margin-bottom:.9rem;
+  }
+  .cert-meta { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.1rem; }
+  .cert-chip {
+    font-size:.66rem; color:rgba(255,255,255,.6);
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
+    padding:5px 11px; border-radius:100px;
+  }
+  .cert-serial { font-size:.6rem; color:rgba(255,255,255,.28); letter-spacing:.04em; margin-bottom:1.1rem; }
+  .cert-link {
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.72rem; font-weight:500; letter-spacing:.05em;
+    color:var(--gold); text-decoration:none;
+    padding:9px 16px; border:1px solid rgba(184,146,74,.4); border-radius:100px;
+    transition:background .2s, color .2s;
+  }
+  .cert-link:hover { background:var(--gold); color:var(--ink); }
+
+  /* ─── REFLEXIÓN ─── */
+  #reflexion { background: var(--cream); }
+  #reflexion .sec-tag { color: var(--gold); }
+  #reflexion .sec-tag::before,
+  #reflexion .sec-tag::after { background: rgba(184,146,74,.3); }
+  #reflexion .sec-h { color: var(--ink); }
+  #reflexion .sec-p { color: var(--ink-soft); }
+
+  .comment-banner {
+    display:flex; align-items:center; gap:1.4rem; flex-wrap:wrap;
+    background:linear-gradient(135deg, var(--teal), var(--teal-mid));
+    border-radius:16px; padding:1.6rem 1.8rem; margin-bottom:1.6rem;
+  }
+  .comment-banner .cb-txt { flex:1; min-width:240px; }
+  .comment-banner h4 {
+    font-family:var(--serif); font-size:1.25rem; font-weight:600;
+    color:#fff; margin-bottom:.3rem;
+  }
+  .comment-banner p { font-size:.82rem; font-weight:300; color:rgba(255,255,255,.7); line-height:1.6; margin:0; }
+  .comment-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff; color:var(--teal);
+    text-decoration:none; font-size:.82rem; font-weight:600;
+    padding:14px 26px; border-radius:100px; letter-spacing:.02em;
+    white-space:nowrap; transition:transform .2s, box-shadow .2s;
+  }
+  .comment-cta:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,.25); }
+
+  /* ─── LIGHTBOX ─── */
+  #lb {
+    position:fixed; inset:0; z-index:400;
+    background:rgba(10,10,18,.92); backdrop-filter:blur(6px);
+    display:none; align-items:center; justify-content:center; padding:3vw;
+    opacity:0; transition:opacity .25s ease;
+  }
+  #lb.open { display:flex; opacity:1; }
+  #lb img { max-width:96vw; max-height:90vh; border-radius:10px; box-shadow:0 30px 90px rgba(0,0,0,.6); }
+  #lb-close {
+    position:absolute; top:1.4rem; right:1.6rem;
+    width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(255,255,255,.12); color:#fff; font-size:1.3rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s;
+  }
+  #lb-close:hover { background:rgba(255,255,255,.24); }
+
   /* ─── SCROLL-TO-TOP ─── */
   #stt {
     position:fixed; bottom:2rem; right:2rem; z-index:90;
@@ -583,6 +703,8 @@
     .dg { grid-template-columns:1fr; gap:1rem; }
     .ac-grid { grid-template-columns:1fr; }
     .proy-grid { grid-template-columns:1fr; }
+    .cert-grid { grid-template-columns:1fr; }
+    .comment-banner { flex-direction:column; align-items:flex-start; }
     .emb-row { grid-template-columns:1fr; }
     .chk { grid-template-columns:1fr; }
     footer { grid-template-columns:1fr; text-align:center; padding:3rem 1.5rem; }
@@ -608,6 +730,8 @@
     <li><a href="#diagnostico" class="nav-link">Diagnóstico</a></li>
     <li><a href="#analisis"    class="nav-link">Análisis</a></li>
     <li><a href="#proyeccion"  class="nav-link">Proyección</a></li>
+    <li><a href="#formacion"   class="nav-link">Formación</a></li>
+    <li><a href="#reflexion"   class="nav-link">Reflexión</a></li>
   </ul>
   <div class="nav-ham" id="ham" style="display:none">
     <span></span><span></span><span></span>
@@ -654,8 +778,8 @@
         <div class="stat-l">Encuestados analizados</div>
       </div>
       <div class="stat">
-        <div class="stat-n">1</div>
-        <div class="stat-l">MOOC seleccionado</div>
+        <div class="stat-n">2</div>
+        <div class="stat-l">MOOCs completados</div>
       </div>
     </div>
   </div>
@@ -702,9 +826,10 @@
     <div class="emb">
       <span class="emb-lbl">Planilla de análisis · Excel</span>
       <p>Resultados individuales y promedios por dimensión, con formato condicional y gráficos de distribución.</p>
-      <div style="background:white; border-radius:10px; overflow:hidden; height:500px;">
-        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSW_27asr9Mb5h8L3vrf7tqbq6wnmrvm1uOL650C6yeNTYXuQ-YU4Pey5-B6dPYCJK3MIYJw0bhrs3p/pubhtml?widget=true&amp;headers=false" width="100%" height="100%" frameborder="0"></iframe>
+      <div style="background:white; border-radius:10px; overflow:auto; height:500px; -webkit-overflow-scrolling:touch;">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSW_27asr9Mb5h8L3vrf7tqbq6wnmrvm1uOL650C6yeNTYXuQ-YU4Pey5-B6dPYCJK3MIYJw0bhrs3p/pubhtml?widget=false&amp;headers=false&amp;chrome=false" style="width:100%; min-width:720px; height:100%; border:0;" frameborder="0"></iframe>
       </div>
+      <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSW_27asr9Mb5h8L3vrf7tqbq6wnmrvm1uOL650C6yeNTYXuQ-YU4Pey5-B6dPYCJK3MIYJw0bhrs3p/pubhtml" target="_blank" rel="noopener" style="display:inline-block; margin-top:.9rem; font-size:.72rem; font-weight:500; letter-spacing:.05em; color:var(--gold); text-decoration:none; border:1px solid rgba(184,146,74,.4); border-radius:100px; padding:8px 15px;">Abrir planilla completa ↗</a>
     </div>
   </div>
 </section>
@@ -784,18 +909,101 @@
     </div>
 
     <div class="pc rv d2">
-      <div class="pc-tag">MOOC Seleccionado</div>
-      <h3>Alfabetización Digital para la Era Conectada</h3>
-      <p>Seleccionado en coherencia con mi brecha en Ciudadanía Digital (2.38). Este curso me permitirá adquirir herramientas para la seguridad en línea y el uso responsable de la identidad digital.</p>
+      <div class="pc-tag">Ruta de formación MOOC</div>
+      <h3>Dos cursos completados para cerrar brechas</h3>
+      <p>A partir del diagnóstico cursé y aprobé dos MOOCs de Santander Open Academy: uno de planificación de proyectos con metodología Agile y otro de comunicación con impacto. Ambos aportan a la práctica docente que proyecto en Lengua y Literatura.</p>
       <div class="mooc-pills">
-        <div class="pill"><span class="pill-v">UCT</span><span class="pill-k">Plataforma</span></div>
-        <div class="pill"><span class="pill-v">D3</span><span class="pill-k">Dimensión</span></div>
+        <div class="pill"><span class="pill-v">2</span><span class="pill-k">MOOCs</span></div>
+        <div class="pill"><span class="pill-v">16h</span><span class="pill-k">Formación</span></div>
         <div class="pill"><span class="pill-v">2026</span><span class="pill-k">Período</span></div>
       </div>
-      <a href="https://ecvirtual.uct.cl/enrol/index.php?id=1409" class="mooc-cta" target="_blank" rel="noopener">
-        Acceder al curso <span class="arr">→</span>
+      <a href="#formacion" class="mooc-cta">
+        Ver certificados <span class="arr">→</span>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ══ FORMACIÓN / CERTIFICADOS ══ -->
+<section id="formacion" class="sec">
+  <div class="sec-tag rv">05 — Formación</div>
+  <h2 class="sec-h rv d1">MOOCs Completados<br>y <strong>Certificados</strong></h2>
+  <p class="sec-p rv d2">Evidencia verificable de los dos cursos aprobados en Santander Open Academy durante el proceso. Cada certificado incluye número de serie, carga horaria y fecha de finalización. Haz clic sobre cualquier certificado para ampliarlo.</p>
+
+  <div class="cert-grid">
+    <div class="cert rv d1">
+      <div class="cert-shot" data-full="cert_agile.png">
+        <img src="cert_agile.png" alt="Certificado Gestión de Proyectos y Fundamentos de metodología Agile — Santander Open Academy">
+        <span class="cert-zoom">Ampliar ⤢</span>
+      </div>
+      <div class="cert-body">
+        <span class="cert-plat">Santander Open Academy</span>
+        <div class="cert-name">Gestión de Proyectos y Fundamentos de metodología Agile</div>
+        <div class="cert-meta">
+          <span class="cert-chip">8 horas</span>
+          <span class="cert-chip">2 módulos</span>
+          <span class="cert-chip">29 jun 2026</span>
+        </div>
+        <div class="cert-serial">Serie OA-2026-0629002810177</div>
+        <a class="cert-link" href="cert_agile.pdf" target="_blank" rel="noopener">Ver certificado oficial ↗</a>
+      </div>
+    </div>
+
+    <div class="cert rv d2">
+      <div class="cert-shot" data-full="cert_comunica.png">
+        <img src="cert_comunica.png" alt="Certificado Comunica con impacto e influencia — Santander Open Academy">
+        <span class="cert-zoom">Ampliar ⤢</span>
+      </div>
+      <div class="cert-body">
+        <span class="cert-plat">Santander Open Academy · LSE</span>
+        <div class="cert-name">Comunica con impacto e influencia</div>
+        <div class="cert-meta">
+          <span class="cert-chip">8 horas</span>
+          <span class="cert-chip">2 módulos</span>
+          <span class="cert-chip">30 jun 2026</span>
+        </div>
+        <div class="cert-serial">Serie OA-2026-0630002812320</div>
+        <a class="cert-link" href="cert_comunica.pdf" target="_blank" rel="noopener">Ver certificado oficial ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REFLEXIÓN ══ -->
+<section id="reflexion" class="sec">
+  <div class="sec-tag rv">06 — Reflexión</div>
+  <h2 class="sec-h rv d1">Informe Reflexivo<br><strong>Metacognitivo</strong></h2>
+  <p class="sec-p rv d2">Síntesis de mi proceso de aprendizaje a lo largo del semestre: autorregulación, análisis del PLE, hallazgos de los dos MOOCs completados y proyección docente con perspectiva inclusiva. Fundamentado en Flavell (1979), Bases Curriculares (MINEDUC, 2019) y Marco de Competencias Digitales Docentes (MINEDUC, 2025).</p>
+
+  <div class="comment-banner rv d1">
+    <div class="cb-txt">
+      <h4>Para la profesora</h4>
+      <p>Puede dejar comentarios directamente sobre el informe en el documento colaborativo. Se abre en Google Docs con permiso de comentador.</p>
+    </div>
+    <a class="comment-cta" href="ENLACE_DOC_COMENTARIOS" target="_blank" rel="noopener">✍ Dejar comentarios</a>
+  </div>
+
+  <div class="rv d2" style="background:white; border-radius:16px; border:1px solid var(--cream-dark); padding:15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; padding-left: 10px;">
+      <div style="background: #e53935; color: white; padding: 8px 12px; border-radius: 6px; font-weight: bold; font-size: 0.8rem;">PDF</div>
+      <div class="doc-info">
+        <h4 style="margin:0; font-family:var(--serif); font-size:1.4rem;">Informe Reflexivo Metacognitivo — Etapa II</h4>
+        <p style="margin:0; font-size:0.85rem; color:var(--ink-muted);">Reflexión del Entorno Personal de Aprendizaje · Rosmeri Railaf Huenchual</p>
+      </div>
+    </div>
+
+    <div style="height:750px; width:100%; border-radius:8px; overflow:hidden; border:1px solid var(--cream-mid);">
+      <iframe
+        src="Informe%20Reflexivo.pdf"
+        width="100%"
+        height="100%"
+        frameborder="0">
+      </iframe>
+    </div>
+
+    <p style="font-size:0.7rem; color:var(--gold); margin-top:10px; text-align:center; text-transform:uppercase; letter-spacing:1px;">
+      Documento oficial · Rosmeri Railaf Huenchual · TIC para el Aprendizaje 2026
+    </p>
   </div>
 </section>
 
@@ -811,6 +1019,12 @@
 </footer>
 
 <button id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">↑</button>
+
+<!-- Lightbox para ampliar certificados -->
+<div id="lb">
+  <button id="lb-close" aria-label="Cerrar">✕</button>
+  <img id="lb-img" src="" alt="Certificado ampliado">
+</div>
 
 <script>
   const spb   = document.getElementById('spb');
@@ -831,7 +1045,7 @@
     entries.forEach(e => {
       if(e.isIntersecting){
         links.forEach(a => a.classList.remove('on'));
-        const a = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+        const a = document.querySelector(`.nav-link[href$="#${e.target.id}"]`);
         if(a) a.classList.add('on');
       }
     });
@@ -859,6 +1073,24 @@
     });
   }, {threshold:.3});
   document.querySelectorAll('.dc').forEach(c => co.observe(c));
+
+  // Ocultar banner de comentarios mientras no haya enlace real del Google Doc
+  const cbtn = document.querySelector('.comment-cta');
+  if (cbtn && cbtn.getAttribute('href') === 'ENLACE_DOC_COMENTARIOS') {
+    const banner = cbtn.closest('.comment-banner');
+    if (banner) banner.style.display = 'none';
+  }
+
+  // Lightbox de certificados
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lb-img');
+  const openLb = src => { lbImg.src = src; lb.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const closeLb = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+  document.querySelectorAll('.cert-shot').forEach(el =>
+    el.addEventListener('click', () => openLb(el.dataset.full)));
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
   // Menú hamburguesa para móviles
   const ham = document.getElementById('ham');
